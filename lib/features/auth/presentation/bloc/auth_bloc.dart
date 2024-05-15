@@ -67,7 +67,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (failure) => emit(
         AuthFailure(failure.message),
       ),
-      (user) => _emitAtuhSuccess(user, emit),
+      (user) {
+        _emitAtuhSuccess(user, emit);
+      },
     );
   }
 
