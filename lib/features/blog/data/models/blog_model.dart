@@ -1,15 +1,15 @@
 import 'package:blog_app/features/blog/domain/entities/blog.dart';
 
 class BlogModel extends Blog {
-  BlogModel({
-    required super.id,
-    required super.updatedAt,
-    required super.postedId,
-    required super.imageUrl,
-    required super.title,
-    required super.content,
-    required super.topics,
-  });
+  BlogModel(
+      {required super.id,
+      required super.updatedAt,
+      required super.postedId,
+      required super.imageUrl,
+      required super.title,
+      required super.content,
+      required super.topics,
+      super.postedName});
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -37,23 +37,23 @@ class BlogModel extends Blog {
     );
   }
 
-  BlogModel copyWith({
-    String? id,
-    DateTime? updatedAt,
-    String? postedId,
-    String? imageUrl,
-    String? title,
-    String? content,
-    List<String>? topics,
-  }) {
+  BlogModel copyWith(
+      {String? id,
+      DateTime? updatedAt,
+      String? postedId,
+      String? imageUrl,
+      String? title,
+      String? content,
+      List<String>? topics,
+      String? postedName}) {
     return BlogModel(
-      id: id ?? this.id,
-      updatedAt: updatedAt ?? this.updatedAt,
-      postedId: postedId ?? this.postedId,
-      imageUrl: imageUrl ?? this.imageUrl,
-      title: title ?? this.title,
-      content: content ?? this.content,
-      topics: topics ?? this.topics,
-    );
+        id: id ?? this.id,
+        updatedAt: updatedAt ?? this.updatedAt,
+        postedId: postedId ?? this.postedId,
+        imageUrl: imageUrl ?? this.imageUrl,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        topics: topics ?? this.topics,
+        postedName: postedName ?? this.postedName);
   }
 }
