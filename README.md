@@ -4,9 +4,7 @@ Blog App
 
 Login, SignUp
 
-![Screenshot_1715943085](https://github.com/sanggit999/blog_app/assets/134129213/838c978b-8b5e-40eb-95ff-413c3ab3b597)
-
-![Screenshot_1715943090](https://github.com/sanggit999/blog_app/assets/134129213/6f7d0781-1e0a-4541-a324-946afd058170)
+![Screenshot_1715943085](https://github.com/sanggit999/blog_app/assets/134129213/838c978b-8b5e-40eb-95ff-413c3ab3b597) ![Screenshot_1715943090](https://github.com/sanggit999/blog_app/assets/134129213/6f7d0781-1e0a-4541-a324-946afd058170)
 
 Main
 
