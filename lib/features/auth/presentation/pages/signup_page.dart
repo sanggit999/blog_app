@@ -5,7 +5,7 @@ import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,19 +36,25 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthFailure) {
-          showSnackBar(context, state.message);
-        }
-      },
-      builder: (context, state) {
-        if (state is AuthLoading) {
-          return const Loading();
-        }
-        return Scaffold(
-          appBar: AppBar(),
-          body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(),
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthFailure) {
+            showSnackBar(context, state.message);
+          } else if (state is AuthSuccess) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              BlogPage.route(),
+              (route) => false,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthLoading) {
+            return const Loading();
+          }
+          return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Form(
@@ -135,9 +141,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

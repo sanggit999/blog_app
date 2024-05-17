@@ -64,34 +64,33 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BlogBloc, BlogState>(
-      listener: (context, state) {
-        if (state is BlogFailure) {
-          showSnackBar(context, state.message);
-          print(state.message);
-        } else if (state is BlogUploadSuccess) {
-          showSnackBar(context, state.success);
-          Navigator.pushAndRemoveUntil(
-            context,
-            BlogPage.route(),
-            (route) => false,
-          );
-        }
-      },
-      builder: (context, state) {
-        if (state is BlogLoading) {
-          return const Loading();
-        }
-        return Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(
-                onPressed: _uploadBlog,
-                icon: const Icon(Icons.done_rounded),
-              )
-            ],
-          ),
-          body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: _uploadBlog,
+            icon: const Icon(Icons.done_rounded),
+          )
+        ],
+      ),
+      body: BlocConsumer<BlogBloc, BlogState>(
+        listener: (context, state) {
+          if (state is BlogFailure) {
+            showSnackBar(context, state.message);
+          } else if (state is BlogUploadSuccess) {
+            showSnackBar(context, state.success);
+            Navigator.pushAndRemoveUntil(
+              context,
+              BlogPage.route(),
+              (route) => false,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is BlogLoading) {
+            return const Loading();
+          }
+          return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Form(
@@ -206,9 +205,9 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
