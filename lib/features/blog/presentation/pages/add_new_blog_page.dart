@@ -55,6 +55,14 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
     }
   }
 
+  final List<String> topics = [
+    "Business",
+    "Technology",
+    "Programming",
+    "Entertainment",
+    "Đánh nhau"
+  ];
+
   @override
   void dispose() {
     titleController.dispose();
@@ -150,12 +158,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: [
-                          'Business',
-                          "Technology",
-                          "Programming",
-                          "Entertainment",
-                        ]
+                        children: topics
                             .map(
                               (e) => Padding(
                                 padding: const EdgeInsets.all(8.0),
